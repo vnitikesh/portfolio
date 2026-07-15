@@ -166,3 +166,313 @@ document.addEventListener(
     },1000);
 
 });
+
+
+const modal =
+document.querySelector(
+'.project-modal'
+);
+
+const modalContent =
+document.getElementById(
+'modalContent'
+);
+
+document
+.querySelectorAll(
+'.project-card'
+)
+.forEach(card=>{
+
+    card.addEventListener(
+        'click',
+        (event)=>{
+
+        const button =
+            event.target.closest(
+                '.view-project'
+            );
+
+        if(button){
+            event.preventDefault();
+            event.stopPropagation();
+        }
+
+        const id =
+            card.dataset.project;
+
+        if(!id || !projects[id]){
+            console.warn(
+                'No project data for:',
+                id
+            );
+            return;
+        }
+
+        openProject(id);
+
+    });
+
+});
+
+
+function openProject(id){
+
+    const p =
+        projects[id];
+
+    if(!p){
+        console.warn(
+            'Unknown project id:',
+            id
+        );
+        return;
+    }
+
+    modalContent.innerHTML = `
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <div>
+
+                <p class="section-tag">
+
+                    ${p.category}
+
+                </p>
+
+                <h2 class="modal-title">
+
+                    ${p.title}
+
+                </h2>
+
+                <h5>
+
+                    ${p.subtitle}
+
+                </h5>
+
+            </div>
+
+        </div>
+
+        <div class="overview">
+
+            ${p.overview}
+
+        </div>
+
+        <div class="metric-grid">
+
+            ${p.metrics.map(m=>`
+
+                <div class="metric-card">
+
+                    <h2>
+
+                        ${m.value}
+
+                    </h2>
+
+                    <p>
+
+                        ${m.label}
+
+                    </p>
+
+                </div>
+
+            `).join('')}
+
+        </div>
+
+        ${p.contributions ?
+
+        `
+
+        <div class="case-block">
+
+            <h4>
+
+                Contributions
+
+            </h4>
+
+            <ul>
+
+            ${p.contributions.map(c=>`
+
+                <li>${c}</li>
+
+            `).join('')}
+
+            </ul>
+
+        </div>
+
+        `:''}
+
+        ${p.architecture ?
+
+        `
+
+        <div class="case-block">
+
+            <h4>
+
+                Architecture
+
+            </h4>
+
+            <div class="architecture-mini">
+
+                ${p.architecture.map(a=>`
+
+                    <div>
+
+                        ${a}
+
+                    </div>
+
+                `).join('')}
+
+            </div>
+
+        </div>
+
+        `:''}
+
+        <div class="modal-tech">
+
+            ${p.stack.map(t=>`
+
+                <span>
+
+                    ${t}
+
+                </span>
+
+            `).join('')}
+
+        </div>
+
+    </div>
+
+    `;
+
+    modal.classList.add(
+        'active'
+    );
+
+    document.body.style
+        .overflow='hidden';
+
+    animateModal();
+}
+
+
+function animateModal(){
+
+    gsap.from(
+
+        '.modal-title',
+
+        {
+
+            y:80,
+            opacity:0,
+            duration:1
+        }
+
+    );
+
+    gsap.from(
+
+        '.metric-card',
+
+        {
+
+            y:50,
+            opacity:0,
+
+            stagger:.1,
+
+            delay:.2
+        }
+
+    );
+
+    gsap.from(
+
+        '.architecture-mini div',
+
+        {
+
+            scale:.5,
+            opacity:0,
+
+            stagger:.08,
+
+            delay:.4
+        }
+
+    );
+
+    gsap.from(
+
+        '.modal-tech span',
+
+        {
+
+            y:30,
+            opacity:0,
+
+            stagger:.05,
+
+            delay:.6
+        }
+
+    );
+}
+
+
+document
+.querySelector(
+'.close-modal'
+)
+.addEventListener(
+'click',
+()=>{
+
+    modal.classList.remove(
+        'active'
+    );
+
+    document.body.style
+        .overflow='auto';
+
+});
+
+function animateModal(){
+
+    gsap.from(
+
+        '.modal-title,.metric-card,.modal-tech span',
+
+        {
+
+            y:50,
+            opacity:0,
+            stagger:.1,
+            duration:1
+
+        }
+    );
+
+}
+
+animateModal();
+

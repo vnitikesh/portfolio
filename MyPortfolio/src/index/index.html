@@ -20,6 +20,7 @@
 
 <body>
 
+    <div id="three-container"></div>
     <div class="mouse-glow"></div>
     <div class="mesh-bg"></div>
 
@@ -710,7 +711,7 @@
 
             <div class="col-lg-6">
 
-                <div class="project-card">
+                <div class="project-card" data-project="rlgym">
 
                     <span>AI</span>
 
@@ -731,15 +732,21 @@
 
                     </div>
 
+                    <button class="view-project">
+
+                        Explore Case Study
+
+                    </button>
+
                 </div>
 
             </div>
 
             <div class="col-lg-6">
 
-                <div class="project-card">
+                <div class="project-card" data-project="sdi">
 
-                    <span>Healthcare</span>
+                    <span>Data Platform</span>
 
                     <h3>Scientific Data Integration</h3>
 
@@ -758,13 +765,19 @@
 
                     </div>
 
+                    <button class="view-project">
+
+                    Explore Case Study
+
+                    </button>
+
                 </div>
 
             </div>
 
             <div class="col-lg-6">
 
-                <div class="project-card">
+                <div class="project-card" data-project="reuters">
 
                     <span>Enterprise</span>
 
@@ -785,13 +798,19 @@
 
                     </div>
 
+                    <button class="view-project">
+
+                    Explore Case Study
+
+                    </button>
+
                 </div>
 
             </div>
 
             <div class="col-lg-6">
 
-                <div class="project-card">
+                <div class="project-card" data-project="copilot">
 
                     <span>Education ERP</span>
 
@@ -811,6 +830,12 @@
                         <span>AWS</span>
 
                     </div>
+
+                    <button class="view-project">
+
+                        Explore Case Study
+
+                    </button>
 
                 </div>
 
@@ -932,6 +957,26 @@
 
     </footer>
 
+    <div class="project-modal">
+
+    <div class="modal-overlay"></div>
+
+    <div class="modal-container">
+
+        <button class="close-modal">
+
+            <i class="fas fa-times"></i>
+
+        </button>
+
+        <div id="modalContent">
+
+        </div>
+
+    </div>
+
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
@@ -939,6 +984,12 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
     <script src="app.js"></script>
+    <script src="js/project.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"></script>
+    <script src="js/three-bg.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+
 
 </body>
 
