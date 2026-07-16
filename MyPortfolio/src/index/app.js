@@ -476,3 +476,46 @@ function animateModal(){
 
 animateModal();
 
+
+
+
+const bookMeetingBtn =
+document.getElementById(
+'bookMeetingBtn'
+);
+
+if(bookMeetingBtn){
+
+    bookMeetingBtn.addEventListener(
+    'click',
+    function(e){
+
+        e.preventDefault();
+
+        const calendlyUrl =
+            'https://calendly.com/vishalnitikesh/30min';
+
+        if(
+            window.Calendly &&
+            typeof window.Calendly.initPopupWidget === 'function'
+        ){
+
+            window.Calendly.initPopupWidget({
+                url: calendlyUrl
+            });
+
+        } else {
+
+            window.open(
+                calendlyUrl,
+                '_blank',
+                'noopener,noreferrer,width=900,height=700'
+            );
+
+        }
+
+    });
+
+}
+
+

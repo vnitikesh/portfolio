@@ -31,7 +31,7 @@
         <div class="container">
 
             <a class="navbar-brand logo" href="#">
-                Nitikesh<span>.</span>
+                StackBracket<span>.</span>
             </a>
 
             <button class="navbar-toggler" data-bs-toggle="collapse"
@@ -49,7 +49,7 @@
                     <li><a href="#">About</a></li>
                     <li><a href="#">Projects</a></li>
                     <li><a href="#">Experience</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="https://calendly.com/vishalnitikesh/30min" target="_blank" class="btn-main" id="bookMeetingBtn" role="button">Book a call <i class="fa-solid fa-phone"></i></a></li>
 
                 </ul>
 
@@ -88,7 +88,7 @@
 
                     <p class="hero-desc">
 
-                        Senior Backend Engineer with 5.5+ years of
+                        Senior Engineer with 6 years of
                         experience building scalable backend platforms,
                         AI systems, distributed architectures,
                         and enterprise-grade cloud applications.
@@ -97,17 +97,23 @@
 
                     <div class="hero-btns">
 
-                        <button class="btn-main">
+                        <a href="#featured-projects" class="btn-main" id="viewProjectsBtn" style="text-decoration:none; display:inline-block;">
 
                             View Projects
 
-                        </button>
+                        </a>
 
-                        <button class="btn-secondary">
+                        
 
-                            Download Resume
+                            <a href="assets/resume/Nitikesh-Vishal(Backend-Engineer-Resume).pdf"
+                                download
+                                target="_blank" class = "resume-btn btn-secondary" style="text-decoration:none;">
 
-                        </button>
+                                    Download Resume
+
+                                </a>
+
+                        
 
                     </div>
 
@@ -188,7 +194,7 @@
 
                     <div class="stat-card">
 
-                        <h2 class="counter" data-target="5.5">
+                        <h2 class="counter" data-target="6">
                             0
                         </h2>
 
@@ -220,7 +226,7 @@
                     <div class="stat-card">
 
                         <h2 class="counter"
-                            data-target="50">
+                            data-target="1000">
 
                             0
 
@@ -266,7 +272,7 @@
 
                     <div class="experience-badge">
 
-                        5.5+
+                        6
 
                         <span>
                             Years Experience
@@ -276,7 +282,8 @@
 
                     <div class="profile-circle">
 
-                        <i class="fas fa-server"></i>
+                        <!-- <i class="fas fa-server"></i> -->
+                         <img src = "assets/img/picture_display.jpeg" alt = "Nitikesh Vishal" class = "profile-pic">
 
                     </div>
 
@@ -292,20 +299,16 @@
 
                 <h2 class="section-title">
 
-                    Engineering Platforms
+                    I Build Engineering Platforms
                     That Scale Beyond Expectations.
 
                 </h2>
 
                 <p class="section-desc">
 
-                    Senior Backend Engineer specializing in
-                    distributed systems, cloud-native applications,
-                    AI infrastructure, and enterprise backend platforms.
-
-                    Experienced in delivering large-scale products
-                    across Healthcare, AI, ERP, SaaS,
-                    and E-Commerce domains.
+                    I am a consultant, and I have a specialization in engineering distributed systems, cloud-native applications,
+                    and high performance AI infrastructure. To look forward, I have architected and delivered large-scale enterprise 
+                    platforms across complex domains like Healthcare, ERP, SaaS, and E-Commerce with a real-world business impact.
 
                 </p>
 
@@ -688,7 +691,7 @@
 
     <!-- Featured Projects -->
 
-    <section class="projects-section">
+    <section class="projects-section" id="featured-projects">
 
     <div class="container">
 
@@ -982,6 +985,14 @@
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
 
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+    <!-- Calendly widget -->
+
+    <link href="https://assets.calendly.com/assets/external/widget.css"
+      rel="stylesheet">
+
+    <script src="https://assets.calendly.com/assets/external/widget.js">
+    </script>
 
     <script src="app.js"></script>
     <script src="js/project.js"></script>
