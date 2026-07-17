@@ -178,42 +178,6 @@ document.getElementById(
 'modalContent'
 );
 
-document
-.querySelectorAll(
-'.project-card'
-)
-.forEach(card=>{
-
-    card.addEventListener(
-        'click',
-        (event)=>{
-
-        const button =
-            event.target.closest(
-                '.view-project'
-            );
-
-        if(button){
-            event.preventDefault();
-            event.stopPropagation();
-        }
-
-        const id =
-            card.dataset.project;
-
-        if(!id || !projects[id]){
-            console.warn(
-                'No project data for:',
-                id
-            );
-            return;
-        }
-
-        openProject(id);
-
-    });
-
-});
 
 
 function openProject(id){
@@ -439,23 +403,6 @@ function animateModal(){
 }
 
 
-document
-.querySelector(
-'.close-modal'
-)
-.addEventListener(
-'click',
-()=>{
-
-    modal.classList.remove(
-        'active'
-    );
-
-    document.body.style
-        .overflow='auto';
-
-});
-
 function animateModal(){
 
     gsap.from(
@@ -516,6 +463,127 @@ if(bookMeetingBtn){
 
     });
 
+}
+
+
+
+
+const assistantContainer =
+    document.querySelector('.ai-assistant');
+const assistantOrb =
+    document.querySelector('.assistant-orb');
+
+const assistantState = {
+    pendingTimer: null,
+    isSpeaking: false,
+    speechStarted: false
+};
+
+function showAssistantOverlay() {
+    const existing = document.querySelector('.assistant-overlay');
+    if (existing) {
+        existing.remove();
+        assistantOrb?.setAttribute('aria-expanded', 'false');
+        return;
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'assistant-overlay';
+    overlay.innerHTML = `
+        <div class="assistant-overlay__panel">
+            <div class="assistant-overlay__title">Quick guide</div>
+            <a href="#featured-projects" class="assistant-action">Explore Projects</a>
+            <a href="assets/resume/Nitikesh-Vishal(Backend-Engineer-Resume).pdf" class="assistant-action" target="_blank" rel="noopener noreferrer">Download Resume</a>
+            <a href="https://calendly.com/vishalnitikesh/30min" class="assistant-action" target="_blank" rel="noopener noreferrer">Book a Call</a>
+        </div>
+    `;
+    document.body.appendChild(overlay);
+    assistantOrb?.setAttribute('aria-expanded', 'true');
+}
+
+function getPreferredAssistantVoice() {
+    const voices = window.speechSynthesis.getVoices();
+    const preferredVoiceNames = [
+        /microsoft (aria|jenny|guy|zira|davis|sonia|natasha)/i,
+        /samantha|ava|allison|zoe|daniel|karen|moira|rishi/i,
+        /google uk english|google us english/i
+    ];
+
+    return preferredVoiceNames
+        .map(pattern => voices.find(voice => pattern.test(voice.name)))
+        .find(Boolean) ||
+        voices.find(voice => /^en(-|_)/i.test(voice.lang) && voice.localService) ||
+        voices.find(voice => /^en(-|_)/i.test(voice.lang)) ||
+        voices[0];
+}
+
+function startPortfolioIntro() {
+    if (assistantState.isSpeaking || assistantState.speechStarted || assistantState.pendingTimer) {
+        return;
+    }
+
+    const text = `Hello and welcome. This is your AI assistant from StackBracket. He is a Senior Backend Engineer specializing in AI systems, backend engineering and cloud architectures. Feel free to explore projects, download resume or schedule a meeting.`;
+
+    showAssistantOverlay();
+
+    if (!('speechSynthesis' in window)) {
+        return;
+    }
+
+    assistantState.pendingTimer = window.setTimeout(() => {
+        assistantState.pendingTimer = null;
+
+        if (assistantState.isSpeaking || assistantState.speechStarted || window.speechSynthesis.speaking) {
+            return;
+        }
+
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.rate = .9;
+        speech.pitch = 1.03;
+        speech.volume = 1;
+
+        speech.onstart = () => {
+            assistantState.isSpeaking = true;
+            assistantState.speechStarted = true;
+            assistantOrb?.classList.add('assistant-speaking');
+        };
+
+        speech.onend = () => {
+            assistantState.isSpeaking = false;
+            assistantState.speechStarted = false;
+            assistantOrb?.classList.remove('assistant-speaking');
+        };
+
+        speech.onerror = () => {
+            assistantState.isSpeaking = false;
+            assistantState.speechStarted = false;
+            assistantOrb?.classList.remove('assistant-speaking');
+        };
+
+        const preferredVoice = getPreferredAssistantVoice();
+        if (preferredVoice) {
+            speech.voice = preferredVoice;
+        }
+
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(speech);
+    }, 1000);
+}
+
+function initAssistant() {
+    if (assistantContainer) {
+        assistantContainer.classList.add('show');
+    }
+
+    assistantOrb?.addEventListener('click', () => {
+        startPortfolioIntro();
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAssistant);
+} else {
+    initAssistant();
 }
 
 

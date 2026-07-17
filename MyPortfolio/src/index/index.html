@@ -45,10 +45,10 @@
 
                 <ul class="navbar-nav ms-auto">
 
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Projects</a></li>
-                    <li><a href="#">Experience</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#featured-projects">Projects</a></li>
+                    <li><a href="#experience">Experience</a></li>
                     <li><a href="https://calendly.com/vishalnitikesh/30min" target="_blank" class="btn-main" id="bookMeetingBtn" role="button">Book a call <i class="fa-solid fa-phone"></i></a></li>
 
                 </ul>
@@ -58,6 +58,18 @@
         </div>
 
     </nav>
+
+    <div class="ai-assistant show">
+
+        <button class="assistant-orb" type="button" aria-label="Open portfolio assistant" aria-expanded="false">
+
+            <div class="pulse-ring"></div>
+
+            <i class="fas fa-robot"></i>
+
+        </button>
+
+    </div>
 
     <!-- HERO -->
 
@@ -260,7 +272,7 @@
 
     <!-- ABOUT -->
 
-    <section class="about-section">
+    <section class="about-section" id="about">
 
     <div class="container">
 
@@ -353,6 +365,167 @@
                         </p>
 
                     </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </section>
+
+    <!-- Featured Projects -->
+
+    <section class="projects-section" id="featured-projects">
+
+    <div class="container">
+
+        <div class="text-center">
+
+            <p class="section-tag">
+                FEATURED PROJECTS
+            </p>
+
+            <h2 class="section-title">
+
+                Enterprise Platforms
+                I've Built.
+
+            </h2>
+
+        </div>
+
+        <div class="row mt-5 g-4">
+
+            <div class="col-lg-6">
+
+                <div class="project-card" data-project="rlgym">
+
+                    <span>AI</span>
+
+                    <h3>RL Gym</h3>
+
+                    <p>
+
+                        FastAPI microservices supporting
+                        reinforcement learning infrastructure.
+
+                    </p>
+
+                    <div class="tech-list">
+
+                        <span>FastAPI</span>
+                        <span>PostgreSQL</span>
+                        <span>Redis</span>
+
+                    </div>
+
+                    <a href="rl-gym.html" class="view-project" style="text-decoration:none; display:inline-flex; align-items:center;">
+
+                        Explore Case Study
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="project-card" data-project="sdi">
+
+                    <span>Data Platform</span>
+
+                    <h3>Scientific Data Integration</h3>
+
+                    <p>
+
+                        Processed millions of records
+                        through distributed ETL pipelines.
+
+                    </p>
+
+                    <div class="tech-list">
+
+                        <span>Luigi</span>
+                        <span>PostgreSQL</span>
+                        <span>Azure</span>
+
+                    </div>
+
+                    <a href="scientific-data-integration.html" class="view-project" style="text-decoration:none; display:inline-flex; align-items:center;">
+
+                    Explore Case Study
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="project-card" data-project="reuters">
+
+                    <span>Enterprise</span>
+
+                    <h3>Reuters Connect</h3>
+
+                    <p>
+
+                        Global media content distribution
+                        infrastructure.
+
+                    </p>
+
+                    <div class="tech-list">
+
+                        <span>GraphQL</span>
+                        <span>AWS</span>
+                        <span>Python</span>
+
+                    </div>
+
+                    <a href="reuters-connect.html" class="view-project" style="text-decoration:none; display:inline-flex; align-items:center;">
+
+                    Explore Case Study
+
+                    </a>
+
+                </div>
+
+            </div>
+
+            <div class="col-lg-6">
+
+                <div class="project-card" data-project="copilot">
+
+                    <span>Education ERP</span>
+
+                    <h3>Columbia ERP</h3>
+
+                    <p>
+
+                        Student lifecycle management
+                        systems for universities.
+
+                    </p>
+
+                    <div class="tech-list">
+
+                        <span>Django</span>
+                        <span>ElasticSearch</span>
+                        <span>AWS</span>
+
+                    </div>
+
+                    <a href="columbia-erp.html" class="view-project" style="text-decoration:none; display:inline-flex; align-items:center;">
+
+                        Explore Case Study
+
+                    </a>
 
                 </div>
 
@@ -596,7 +769,7 @@
 
     <!--Experience-->
 
-    <section class="timeline-section">
+    <section class="timeline-section" id="experience">
 
     <div class="container">
 
@@ -689,166 +862,6 @@
 
     </section>
 
-    <!-- Featured Projects -->
-
-    <section class="projects-section" id="featured-projects">
-
-    <div class="container">
-
-        <div class="text-center">
-
-            <p class="section-tag">
-                FEATURED PROJECTS
-            </p>
-
-            <h2 class="section-title">
-
-                Enterprise Platforms
-                I've Built.
-
-            </h2>
-
-        </div>
-
-        <div class="row mt-5 g-4">
-
-            <div class="col-lg-6">
-
-                <div class="project-card" data-project="rlgym">
-
-                    <span>AI</span>
-
-                    <h3>RL Gym</h3>
-
-                    <p>
-
-                        FastAPI microservices supporting
-                        reinforcement learning infrastructure.
-
-                    </p>
-
-                    <div class="tech-list">
-
-                        <span>FastAPI</span>
-                        <span>PostgreSQL</span>
-                        <span>Redis</span>
-
-                    </div>
-
-                    <button class="view-project">
-
-                        Explore Case Study
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="project-card" data-project="sdi">
-
-                    <span>Data Platform</span>
-
-                    <h3>Scientific Data Integration</h3>
-
-                    <p>
-
-                        Processed millions of records
-                        through distributed ETL pipelines.
-
-                    </p>
-
-                    <div class="tech-list">
-
-                        <span>Luigi</span>
-                        <span>PostgreSQL</span>
-                        <span>Azure</span>
-
-                    </div>
-
-                    <button class="view-project">
-
-                    Explore Case Study
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="project-card" data-project="reuters">
-
-                    <span>Enterprise</span>
-
-                    <h3>Reuters Connect</h3>
-
-                    <p>
-
-                        Global media content distribution
-                        infrastructure.
-
-                    </p>
-
-                    <div class="tech-list">
-
-                        <span>GraphQL</span>
-                        <span>AWS</span>
-                        <span>Python</span>
-
-                    </div>
-
-                    <button class="view-project">
-
-                    Explore Case Study
-
-                    </button>
-
-                </div>
-
-            </div>
-
-            <div class="col-lg-6">
-
-                <div class="project-card" data-project="copilot">
-
-                    <span>Education ERP</span>
-
-                    <h3>Columbia ERP</h3>
-
-                    <p>
-
-                        Student lifecycle management
-                        systems for universities.
-
-                    </p>
-
-                    <div class="tech-list">
-
-                        <span>Django</span>
-                        <span>ElasticSearch</span>
-                        <span>AWS</span>
-
-                    </div>
-
-                    <button class="view-project">
-
-                        Explore Case Study
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    </section>
 
     <!-- Tech stack -->
 
@@ -856,9 +869,22 @@
 
     <div class="container-fluid">
 
-        <div class="marquee">
+        <div class="marquee marquee-top">
 
             <div class="marquee-content">
+
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>Django</span>
+                <span>PostgreSQL</span>
+                <span>Redis</span>
+                <span>Docker</span>
+                <span>AWS</span>
+                <span>Azure</span>
+                <span>GraphQL</span>
+                <span>MongoDB</span>
+                <span>TensorFlow</span>
+                <span>PyTorch</span>
 
                 <span>Python</span>
                 <span>FastAPI</span>
@@ -877,9 +903,45 @@
 
         </div>
 
+        <div class="marquee marquee-bottom">
+
+            <div class="marquee-content marquee-content-reverse">
+
+                <span>Microservices</span>
+                <span>Kubernetes</span>
+                <span>CI/CD</span>
+                <span>Linux</span>
+                <span>Git</span>
+                <span>Nginx</span>
+                <span>Kafka</span>
+                <span>RabbitMQ</span>
+                <span>Celery</span>
+                <span>OpenAPI</span>
+                <span>ElasticSearch</span>
+                <span>Prometheus</span>
+
+                <span>Microservices</span>
+                <span>Kubernetes</span>
+                <span>CI/CD</span>
+                <span>Linux</span>
+                <span>Git</span>
+                <span>Nginx</span>
+                <span>Kafka</span>
+                <span>RabbitMQ</span>
+                <span>Celery</span>
+                <span>OpenAPI</span>
+                <span>ElasticSearch</span>
+                <span>Prometheus</span>
+
+            </div>
+
+        </div>
+
+
     </div>
 
     </section>
+
 
     <!-- Contact -->
 
@@ -891,13 +953,13 @@
 
             <p class="section-tag">
 
-                LET'S CONNECT
+                CONSULTATION
 
             </p>
 
             <h2 class="section-title">
 
-                Let's Build Something Extraordinary.
+                Let's Discuss Your Next Project.
 
             </h2>
 
@@ -911,19 +973,20 @@
 
             <div class="contact-buttons">
 
+                <a href="https://calendly.com/vishalnitikesh/30min" target="_blank" id="bookMeetingBtn"
+                   class="btn-main" role="button">
+
+                    Book 30 Min Call <i class="fa-solid fa-phone"></i>
+
+                </a>
+
                 <a href="mailto:vishalnitikesh@gmail.com"
-                   class="btn-main">
+                   class="btn-secondary">
 
                     Email Me
 
                 </a>
 
-                <a href="#"
-                   class="btn-secondary">
-
-                    LinkedIn
-
-                </a>
 
             </div>
 
@@ -960,26 +1023,6 @@
 
     </footer>
 
-    <div class="project-modal">
-
-    <div class="modal-overlay"></div>
-
-    <div class="modal-container">
-
-        <button class="close-modal">
-
-            <i class="fas fa-times"></i>
-
-        </button>
-
-        <div id="modalContent">
-
-        </div>
-
-    </div>
-
-</div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"></script>
@@ -994,12 +1037,11 @@
     <script src="https://assets.calendly.com/assets/external/widget.js">
     </script>
 
-    <script src="app.js"></script>
-    <script src="js/project.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js"></script>
     <script src="js/three-bg.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="js/project.js"></script>
+    <script src="app.js"></script>
 
 
 </body>

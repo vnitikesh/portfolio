@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Columbia ERP | Education Systems Case Study</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <style>
+        :root {
+            --case-bg: #04070d;
+            --case-surface: rgba(255,255,255,0.06);
+            --case-border: rgba(255,255,255,0.12);
+            --case-text: #f4f7ff;
+            --case-muted: #8d97b0;
+            --case-cyan: #67e8f9;
+            --case-purple: #8b5cf6;
+            --case-gold: #fbbf24;
+        }
+
+        html { scroll-behavior: smooth; }
+        body.case-study-page { margin:0; background: radial-gradient(circle at 0% 0%, rgba(251,191,36,0.16), transparent 26%), radial-gradient(circle at 100% 0%, rgba(103,232,249,0.16), transparent 24%), var(--case-bg); color: var(--case-text); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; overflow-x:hidden; }
+        .case-study-page * { box-sizing: border-box; }
+        .case-shell { position:relative; max-width:1400px; margin:0 auto; padding:24px 24px 100px; }
+        .case-nav { position: sticky; top: 18px; z-index: 20; display:flex; align-items:center; justify-content:space-between; padding:14px 18px; border:1px solid var(--case-border); border-radius:999px; backdrop-filter: blur(22px); background: rgba(8,10,16,0.66); box-shadow:0 20px 60px rgba(0,0,0,0.25); margin-bottom:26px; }
+        .case-nav .brand { font-size:1rem; letter-spacing:0.16em; text-transform:uppercase; color:var(--case-muted); text-decoration:none; }
+        .case-nav .nav-links { display:flex; gap:18px; flex-wrap:wrap; }
+        .case-nav .nav-links a { color:var(--case-muted); text-decoration:none; font-size:0.92rem; transition: color 0.25s ease; }
+        .case-nav .nav-links a:hover, .case-nav .nav-links a.active { color:var(--case-text); }
+        .progress-track { position: sticky; top:0; z-index:19; width:100%; height:2px; background:rgba(255,255,255,0.1); margin-bottom:28px; border-radius:999px; overflow:hidden; }
+        .progress-fill { height:100%; width:0%; background: linear-gradient(90deg, var(--case-purple), var(--case-cyan)); transition:width 0.25s ease; }
+        .section { position:relative; padding:72px 0; border-top: 1px solid rgba(255,255,255,0.07); }
+        .hero { padding-top:56px; min-height:92vh; display:grid; grid-template-columns:1.1fr 0.9fr; gap:40px; align-items:center; }
+        .eyebrow { display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid rgba(251,191,36,0.24); border-radius:999px; color:var(--case-purple); font-size:0.8rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:18px; }
+        .hero h1 { font-size: clamp(2.8rem, 5vw, 5.3rem); line-height:0.95; margin:0 0 16px; letter-spacing:-0.03em; }
+        .hero .lede { font-size:1.08rem; line-height:1.8; color:var(--case-muted); max-width:720px; margin-bottom:28px; }
+        .meta-grid { display:grid; grid-template-columns: repeat(2, minmax(160px, 1fr)); gap:12px; margin-bottom:28px; max-width:620px; }
+        .meta-card { padding:14px 16px; border-radius:16px; border:1px solid var(--case-border); background: rgba(255,255,255,0.04); backdrop-filter: blur(16px); }
+        .meta-card .label { color:var(--case-muted); font-size:0.77rem; letter-spacing:0.16em; text-transform:uppercase; display:block; margin-bottom:6px; }
+        .meta-card .value { font-size:0.98rem; font-weight:600; color:var(--case-text); }
+        .hero-actions { display:flex; gap:14px; flex-wrap:wrap; }
+        .btn-main, .btn-secondary { display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding:12px 20px; text-decoration:none; transition:transform 0.25s ease, border-color 0.25s ease, background 0.25s ease; }
+        .btn-main { color:white; background:linear-gradient(90deg, var(--case-purple), var(--case-cyan)); box-shadow:0 16px 40px rgba(251,191,36,0.14); }
+        .btn-secondary { color:var(--case-text); border:1px solid var(--case-border); background:rgba(255,255,255,0.04); }
+        .btn-main:hover, .btn-secondary:hover { transform: translateY(-2px); }
+        .hero-visual { position:relative; min-height:560px; display:grid; place-items:center; }
+        .hero-visual .orb { position:absolute; inset:8% 10%; border-radius:38px; border:1px solid var(--case-border); background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(251,191,36,0.05)); backdrop-filter: blur(34px); box-shadow: inset 0 1px 0 rgba(255,255,255,0.16), 0 30px 90px rgba(0,0,0,0.38); overflow:hidden; }
+        .hero-visual .grid { position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size:36px 36px; mask-image: linear-gradient(180deg, rgba(0,0,0,0.95), transparent 100%); }
+        .hero-visual .node { position:absolute; padding:12px 14px; border-radius:12px; font-size:0.8rem; font-weight:600; letter-spacing:0.12em; text-transform:uppercase; color:var(--case-text); border:1px solid var(--case-border); background:rgba(3,6,12,0.9); box-shadow:0 14px 34px rgba(0,0,0,0.24); animation:drift 6s ease-in-out infinite; }
+        .hero-visual .node:nth-child(2) { top:24%; left:12%; animation-delay:-1s; }
+        .hero-visual .node:nth-child(3) { top:54%; right:16%; animation-delay:-2.4s; }
+        .hero-visual .node:nth-child(4) { bottom:20%; left:24%; animation-delay:-3.2s; }
+        @keyframes drift { 0%,100% { transform: translateY(0px);} 50%{ transform:translateY(-10px);} }
+        .section-head { display:flex; justify-content:space-between; align-items:end; gap:16px; margin-bottom:28px; flex-wrap:wrap; }
+        .section-head h2 { font-size:1.5rem; margin:0; letter-spacing:-0.02em; }
+        .section-head p { color:var(--case-muted); margin:0; max-width:640px; line-height:1.7; }
+        .metric-grid { display:grid; grid-template-columns:repeat(4, minmax(180px, 1fr)); gap:16px; margin-top:12px; }
+        .metric-card { padding:24px; border:1px solid var(--case-border); border-radius:24px; background:linear-gradient(135deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03)); backdrop-filter:blur(18px); }
+        .metric-card .value { font-size:1.45rem; font-weight:700; margin-bottom:6px; color:var(--case-purple); }
+        .metric-card .label { color:var(--case-muted); font-size:0.95rem; }
+        .story-grid { display:grid; grid-template-columns:1.1fr 0.9fr; gap:24px; align-items:start; }
+        .panel { border-radius:28px; border:1px solid var(--case-border); background:rgba(255,255,255,0.04); padding:26px; backdrop-filter: blur(16px); }
+        .timeline-list { display:grid; gap:12px; }
+        .timeline-item { padding:16px 18px; border-radius:16px; border:1px solid rgba(255,255,255,0.08); background:rgba(2,6,12,0.45); color:var(--case-muted); line-height:1.7; }
+        .timeline-item strong { color:var(--case-text); }
+        .journey-map { display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:12px; margin-top:24px; }
+        .journey-card { padding:16px; border-radius:20px; border:1px solid var(--case-border); background:linear-gradient(140deg, rgba(251,191,36,0.08), rgba(103,232,249,0.06)); min-height:160px; }
+        .journey-card h3 { margin:0 0 8px; font-size:1rem; }
+        .journey-card p { color:var(--case-muted); line-height:1.65; font-size:0.92rem; margin:0; }
+        .architecture-diagram { position:relative; padding:26px; border-radius:30px; border:1px solid var(--case-border); background:rgba(255,255,255,0.04); min-height:420px; overflow:hidden; }
+        .layer-node { position:absolute; padding:12px 14px; min-width:140px; border-radius:16px; border:1px solid var(--case-border); background:rgba(7,10,19,0.86); text-align:center; font-weight:600; color:var(--case-text); box-shadow:0 16px 36px rgba(0,0,0,0.2); }
+        .layer-node.top { top:18%; left:8%; }
+        .layer-node.mid { top:44%; left:28%; }
+        .layer-node.data { top:42%; right:20%; }
+        .layer-node.cloud { bottom:16%; left:36%; }
+        .layer-node.third { bottom:12%; right:10%; }
+        .flow-line { position:absolute; height:2px; background:linear-gradient(90deg, rgba(251,191,36,0.2), rgba(103,232,249,0.8)); transform-origin:left center; animation:pulseLine 4s ease-in-out infinite; }
+        .flow-line.vertical { width:2px; height:90px; background:linear-gradient(180deg, rgba(251,191,36,0.2), rgba(103,232,249,0.8)); }
+        @keyframes pulseLine { 0%,100% { opacity:0.45;} 50% { opacity:1; } }
+        .responsibility-list { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; margin-top:18px; }
+        .resp-card { padding:20px; border-radius:22px; border:1px solid var(--case-border); background:rgba(255,255,255,0.04); backdrop-filter: blur(16px); }
+        .resp-card h3 { margin:0 0 6px; font-size:1rem; }
+        .resp-card p { margin:0; color:var(--case-muted); line-height:1.7; }
+        .expand-grid { display:grid; gap:12px; }
+        .expand-card { border:1px solid var(--case-border); border-radius:20px; background:rgba(255,255,255,0.04); padding:18px 20px; overflow:hidden; transition:border-color 0.25s ease, transform 0.25s ease; }
+        .expand-card.open { border-color:rgba(103,232,249,0.4); transform:translateY(-2px); }
+        .expand-card .head { display:flex; justify-content:space-between; align-items:center; gap:12px; cursor:pointer; font-weight:600; }
+        .expand-card .body { max-height:0; overflow:hidden; transition:max-height 0.3s ease; color:var(--case-muted); line-height:1.7; margin-top:0; }
+        .expand-card.open .body { max-height:220px; margin-top:12px; }
+        .stack-grid { display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:12px; }
+        .stack-card { padding:18px; border-radius:20px; border:1px solid var(--case-border); background:rgba(255,255,255,0.04); min-height:120px; }
+        .stack-card h3 { margin:0 0 8px; font-size:1rem; }
+        .stack-card ul { padding-left:16px; margin:0; color:var(--case-muted); line-height:1.7; }
+        .results-grid { display:grid; grid-template-columns:0.9fr 1.1fr; gap:20px; }
+        .bar-list { display:grid; gap:14px; }
+        .bar-item { display:grid; gap:8px; }
+        .bar-top { display:flex; justify-content:space-between; color:var(--case-muted); font-size:0.92rem; }
+        .bar-track { height:8px; border-radius:999px; background: rgba(255,255,255,0.08); overflow:hidden; }
+        .bar-fill { height:100%; border-radius:inherit; background:linear-gradient(90deg, var(--case-purple), var(--case-cyan)); width:0; transition:width 1s ease; }
+        .learn-grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; }
+        .learn-card { padding:22px; border-radius:24px; border:1px solid var(--case-border); background:rgba(255,255,255,0.04); }
+        .learn-card h3 { margin:0 0 10px; font-size:1rem; }
+        .learn-card p { margin:0; color:var(--case-muted); line-height:1.7; }
+        .featured-row { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; }
+        .featured-card { padding:22px; border-radius:24px; border:1px solid var(--case-border); background:rgba(255,255,255,0.04); text-decoration:none; color:inherit; transition:transform 0.28s ease, border-color 0.28s ease; }
+        .featured-card:hover { transform: translateY(-3px); border-color: rgba(103,232,249,0.4); }
+        .featured-card p { color:var(--case-muted); line-height:1.7; }
+        .reveal { opacity:0; transform:translateY(20px); transition:opacity 0.7s ease, transform 0.7s ease; }
+        .reveal.visible { opacity:1; transform: translateY(0); }
+        @media (max-width:1024px) { .hero, .story-grid, .results-grid { grid-template-columns:1fr; } .metric-grid, .journey-map, .stack-grid, .featured-row { grid-template-columns:repeat(2, minmax(0, 1fr)); } .responsibility-list, .learn-grid { grid-template-columns:1fr; } }
+        @media (max-width:720px) { .case-shell { padding:16px 16px 80px; } .case-nav { flex-direction:column; gap:10px; border-radius:24px; } .meta-grid, .metric-grid, .journey-map, .stack-grid, .featured-row { grid-template-columns:1fr; } .hero { min-height:auto; padding-top:28px; } .section { padding:56px 0; } }
+    </style>
+</head>
+<body class="case-study-page">
+    <div class="case-shell">
+        <nav class="case-nav">
+            <a class="brand" href="index.html">StackBracket</a>
+            <div class="nav-links">
+                <a href="#summary">Summary</a>
+                <a href="#challenge">Challenge</a>
+                <a href="#architecture">Architecture</a>
+                <a href="#results">Results</a>
+            </div>
+            <a class="btn-secondary" href="index.html#featured-projects">Back to portfolio</a>
+        </nav>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+
+        <header class="hero section reveal">
+            <div>
+                <div class="eyebrow"><i class="fa-solid fa-graduation-cap"></i> Education ERP case study</div>
+                <h1>Columbia ERP</h1>
+                <p class="lede">An education operations platform that unified admissions, records, finance touchpoints, and student lifecycle workflows into a dependable operating system for university teams.</p>
+                <div class="meta-grid">
+                    <div class="meta-card"><span class="label">Timeline</span><span class="value">8 months</span></div>
+                    <div class="meta-card"><span class="label">Team</span><span class="value">25 engineers</span></div>
+                    <div class="meta-card"><span class="label">Role</span><span class="value">Backend Engineer</span></div>
+                    <div class="meta-card"><span class="label">Stack</span><span class="value">Django • PostgreSQL • AWS</span></div>
+                </div>
+                <div class="hero-actions">
+                    <a class="btn-main" href="#architecture">View architecture</a>
+                    <a class="btn-secondary" href="#results">See impact</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="orb"><div class="grid"></div></div>
+                <div class="node">Admissions</div>
+                <div class="node">Records</div>
+                <div class="node">Finance</div>
+            </div>
+        </header>
+
+        <section id="summary" class="section reveal">
+            <div class="section-head">
+                <h2>Executive summary</h2>
+                <p>The initiative focused on transforming disconnected operational processes with an unified student lifecycle platform, enabling workflow predictability, data transparency, and scalable institutional management.</p>
+            </div>
+            <div class="metric-grid">
+                <div class="metric-card"><div class="value" data-target="42">0</div><div class="label">% less manual coordination</div></div>
+                <div class="metric-card"><div class="value" data-target="31">0</div><div class="label">% faster approvals</div></div>
+                <div class="metric-card"><div class="value" data-target="96">0</div><div class="label">% data consistency</div></div>
+                <div class="metric-card"><div class="value" data-target="24">0</div><div class="label">% lower support load</div></div>
+            </div>
+        </section>
+
+        <section id="challenge" class="section reveal">
+            <div class="section-head">
+                <h2>The challenge</h2>
+                <p>University operations had become fragmented across manual handoffs, isolated reports, and delayed status updates, creating more effort than value.</p>
+            </div>
+            <div class="story-grid">
+                <div class="panel">
+                    <div class="timeline-list">
+                        <div class="timeline-item"><strong>Manual workflows</strong> slowed admissions, registration, and lifecycle changes across the organization.</div>
+                        <div class="timeline-item"><strong>Limited visibility</strong> made it hard for teams to see bottlenecks or resolve issues quickly.</div>
+                        <div class="timeline-item"><strong>Data fragmentation</strong> weakened confidence in reporting and downstream operational decisions.</div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="timeline-list">
+                        <div class="timeline-item"><strong>Workflow orchestration</strong> replaced brittle handoffs with structured status-driven processes.</div>
+                        <div class="timeline-item"><strong>Shared data models</strong> improved reporting fidelity and reduced duplicate reconciliation work.</div>
+                        <div class="timeline-item"><strong>Operational resilience</strong> made support issues easier to triage and fix.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="research" class="section reveal">
+            <div class="section-head">
+                <h2>Discovery & research</h2>
+                <p>I worked with administrative teams, student-services stakeholders, and academic support staff to identify the highest-friction moments.</p>
+            </div>
+            <div class="journey-map">
+                <div class="journey-card"><h3>Stakeholders</h3><p>Registrars, admissions leads, finance analysts, and student support teams all participated in shaping the workflows.</p></div>
+                <div class="journey-card"><h3>Personas</h3><p>Staff needed dependable status tracking while leadership needed dependable reporting and auditability.</p></div>
+                <div class="journey-card"><h3>Functional needs</h3><p>Case routing, form orchestration, record updates, and role-based approvals were essential.</p></div>
+                <div class="journey-card"><h3>Constraints</h3><p>Systems needed to support strong compliance requirements while remaining usable for busy operations teams.</p></div>
+            </div>
+        </section>
+
+        <section id="architecture" class="section reveal">
+            <div class="section-head">
+                <h2>Solution blueprint</h2>
+                <p>The architecture centered on modular services, dependable APIs, and a shared workflow engine that made student operations more transparent.</p>
+            </div>
+            <div class="architecture-diagram">
+                <div class="flow-line" style="top:30%; left:18%; width:16%;"></div>
+                <div class="flow-line" style="top:50%; left:36%; width:17%;"></div>
+                <div class="flow-line" style="top:54%; left:56%; width:16%;"></div>
+                <div class="flow-line vertical" style="top:35%; left:46%;"></div>
+                <div class="layer-node top">Student Intake</div>
+                <div class="layer-node mid">Django Services</div>
+                <div class="layer-node data">PostgreSQL • Search</div>
+                <div class="layer-node cloud">Workflow Engine</div>
+                <div class="layer-node third">Reporting • Audit</div>
+            </div>
+        </section>
+
+        <section id="responsibilities" class="section reveal">
+            <div class="section-head">
+                <h2>My responsibilities</h2>
+                <p>I participated in architecting backend platform and core services while coordinating data and workflow decisions across the delivery team.</p>
+            </div>
+            <div class="responsibility-list">
+                <div class="resp-card"><h3>Service design</h3><p>Defined domain boundaries for admissions, records, and administration workflows so the system could scale gracefully.</p></div>
+                <div class="resp-card"><h3>Backend implementation</h3><p>Built lifecycle APIs, status transitions, and permissions layers that enforced reliable handling across roles.</p></div>
+                <div class="resp-card"><h3>Performance tuning</h3><p>Optimized read-heavy endpoints and search behavior to keep operational screens responsive under real workloads.</p></div>
+                <div class="resp-card"><h3>Operational support</h3><p>Improved monitoring and failure handling so support teams could resolve issues without heavy investigation.</p></div>
+            </div>
+        </section>
+
+        <section id="challenges" class="section reveal">
+            <div class="section-head">
+                <h2>Engineering challenges</h2>
+                <p>The hardest problems were ensuring workflow clarity, secure access, and reliable data consistency across sensitive institutional processes.</p>
+            </div>
+            <div class="expand-grid">
+                <div class="expand-card"><div class="head"><span>Workflow consistency</span><i class="fa-solid fa-plus"></i></div><div class="body"><p>We standardized lifecycle states and event triggers so approvals, handoffs, and notification steps behaved predictably.</p></div></div>
+                <div class="expand-card"><div class="head"><span>Permission complexity</span><i class="fa-solid fa-plus"></i></div><div class="body"><p>We built role-aware access patterns that protected sensitive data while keeping everyday operations efficient.</p></div></div>
+                <div class="expand-card"><div class="head"><span>Reporting accuracy</span><i class="fa-solid fa-plus"></i></div><div class="body"><p>We introduced a more reliable data model and clear reconciliation points so stakeholders could trust the reports they received.</p></div></div>
+            </div>
+        </section>
+
+        <section id="stack" class="section reveal">
+            <div class="section-head">
+                <h2>Technology ecosystem</h2>
+                <p>Technology choices emphasized maintainability, secure operations, and intuitive administration for business users.</p>
+            </div>
+            <div class="stack-grid">
+                <div class="stack-card"><h3>Backend</h3><ul><li>Django</li><li>Python</li><li>REST APIs</li></ul></div>
+                <div class="stack-card"><h3>Database</h3><ul><li>PostgreSQL</li><li>ElasticSearch</li><li>Audit logs</li></ul></div>
+                <div class="stack-card"><h3>Cloud</h3><ul><li>AWS</li><li>Managed services</li><li>Storage & queues</li></ul></div>
+                <div class="stack-card"><h3>Ops</h3><ul><li>Docker</li><li>CI/CD</li><li>Jenkins</li></ul></div>
+                <div class="stack-card"><h3>Reporting</h3><ul><li>Analytics</li><li>Exports</li><li>Operational dashboards</li></ul></div>
+            </div>
+        </section>
+
+        <section id="results" class="section reveal">
+            <div class="section-head">
+                <h2>Results & impact</h2>
+                <p>The work gave the institution a more dependable operations spine and a better foundation for future growth.</p>
+            </div>
+            <div class="results-grid">
+                <div class="panel">
+                    <div class="timeline-list">
+                        <div class="timeline-item"><strong>42%</strong> less manual coordination across core workflows</div>
+                        <div class="timeline-item"><strong>31%</strong> faster approvals and lifecycle decisions</div>
+                        <div class="timeline-item"><strong>Higher</strong> confidence in reporting and audit readiness</div>
+                        <div class="timeline-item"><strong>Lower</strong> volume of operational escalations and support tickets</div>
+                    </div>
+                </div>
+                <div class="panel">
+                    <div class="bar-list">
+                        <div class="bar-item"><div class="bar-top"><span>Workflow reliability</span><span>96%</span></div><div class="bar-track"><div class="bar-fill" data-width="96"></div></div></div>
+                        <div class="bar-item"><div class="bar-top"><span>Approval speed</span><span>88%</span></div><div class="bar-track"><div class="bar-fill" data-width="88"></div></div></div>
+                        <div class="bar-item"><div class="bar-top"><span>Reporting confidence</span><span>92%</span></div><div class="bar-track"><div class="bar-fill" data-width="92"></div></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section reveal">
+            <div class="section-head">
+                <h2>Key learnings</h2>
+                <p>Enterprise ERP experience is not just about transactions; it is about creating calm, trustworthy operational systems for people under pressure.</p>
+            </div>
+            <div class="learn-grid">
+                <div class="learn-card"><h3>Architectural lessons</h3><p>Shared workflow primitives reduce complexity, but only when the process model remains intuitive to the teams using it.</p></div>
+                <div class="learn-card"><h3>Team collaboration</h3><p>Close partnership with operators and administrators kept the solution aligned with real institutional needs.</p></div>
+                <div class="learn-card"><h3>Leadership perspective</h3><p>Making decisions visible to stakeholders helped create trust and confidence in the platform.</p></div>
+                <div class="learn-card"><h3>Future improvements</h3><p>Self-service administration and richer workflow analytics remain the most valuable next steps.</p></div>
+            </div>
+        </section>
+
+        <section class="section reveal">
+            <div class="section-head">
+                <h2>Other featured projects</h2>
+                <p>Selected work spanning enterprise platforms, AI infrastructure, and scientific data systems.</p>
+            </div>
+            <div class="featured-row">
+                <a class="featured-card" href="reuters-connect.html"><div class="eyebrow" style="margin-bottom:12px;">Enterprise</div><h3>Reuters Connect</h3><p>Global content distribution infrastructure and resilient enterprise delivery.</p></a>
+                <a class="featured-card" href="rl-gym.html"><div class="eyebrow" style="margin-bottom:12px;">AI Platform</div><h3>RL-GYM</h3><p>Reusable training infrastructure for experimentation and intelligent systems.</p></a>
+                <a class="featured-card" href="scientific-data-integration.html"><div class="eyebrow" style="margin-bottom:12px;">Data Platform</div><h3>Scientific Data Integration</h3><p>Scalable data processing pipelines for complex scientific workflows.</p></a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        const revealItems = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+        revealItems.forEach(item => observer.observe(item));
+
+        const progressFill = document.getElementById('progressFill');
+        const updateProgress = () => {
+            const scrollTop = window.scrollY;
+            const height = document.documentElement.scrollHeight - window.innerHeight;
+            const percent = height > 0 ? (scrollTop / height) * 100 : 0;
+            progressFill.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+        };
+        window.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+
+        document.querySelectorAll('.expand-card').forEach(card => {
+            card.querySelector('.head').addEventListener('click', () => {
+                card.classList.toggle('open');
+            });
+        });
+
+        document.querySelectorAll('.metric-card .value').forEach((el) => {
+            const target = parseInt(el.dataset.target, 10);
+            let current = 0;
+            const step = target / 50;
+            const tick = () => {
+                current += step;
+                el.textContent = current >= target ? `${target}${target === 96 ? '%' : target === 42 ? '%' : target === 31 ? '%' : target === 24 ? '%' : ''}` : `${Math.round(current)}`;
+                if (current < target) requestAnimationFrame(tick);
+            };
+            const observer2 = new IntersectionObserver(([entry]) => {
+                if (entry.isIntersecting) {
+                    tick();
+                    observer2.disconnect();
+                }
+            }, { threshold: 0.4 });
+            observer2.observe(el);
+        });
+
+        document.querySelectorAll('.bar-fill').forEach((bar) => {
+            const width = bar.dataset.width;
+            setTimeout(() => { bar.style.width = `${width}%`; }, 200);
+        });
+    </script>
+</body>
+</html>
