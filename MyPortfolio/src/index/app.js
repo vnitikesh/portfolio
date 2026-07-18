@@ -522,7 +522,27 @@ function startPortfolioIntro() {
         return;
     }
 
-    const text = `Hello there, and welcome aboard. I am your friendly AI guide, and you are currently exploring the digital headquarter of StackBracket. Now let me quickly show you around. You shall explore the Projects section, that contains more moving parts than most startup roadmaps. Feel free to download resume. And, if you think of collaborating, you may schedule a meeting directly from this portfolio. No lengthy email chains. No "Let's circle back next week". Just pick a time. And if you are a recruiter wondering whether he enjoys debugging production issues at 2 AM... the answer is unfortunately yes. And yuppp... enjoy your visit. See you around.`;
+    const text = `Hello there, and welcome aboard.
+
+    I am your friendly AI guide, and you are currently exploring the digital headquarter of StackBracket. 
+    
+    Now, let me quickly show you around. 
+    
+    Feel free to explore the Projects section, where you will discover engineering platforms with more moving parts than most startup roadmaps.
+    
+    You may also download the resume for the executive summary version of everything you see here.
+    
+    And if you are thinking about collaborating, you can schedule a meeting directly by clicking the "Book a Call" button.
+    No lengthy email chains. No "Let's circle back next week". Just pick a time.
+
+    And if you are a recruiter wondering whether I enjoy debugging production issues at 2 AM...
+
+    ...the answer is, unfortunately, yes.
+    
+    Anyway, make yourself comfortable, explore around, and enjoy your visit.
+
+    See you around.
+    `;
 
     showAssistantOverlay();
 
