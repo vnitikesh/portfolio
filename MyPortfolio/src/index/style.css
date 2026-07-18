@@ -295,6 +295,8 @@ section {
     letter-spacing: 4px;
 
     margin-bottom: 20px;
+
+    margin-top: 10px;
 }
 
 .section-title {
@@ -558,6 +560,15 @@ section {
         font-size:40px;
     }
 
+    .hero{
+        padding-top: 120px;
+    }
+
+    .hero .row{
+        min-height: auto !important;
+        padding-top: 18px;
+    }
+
     .hero h1{
 
         font-size:50px;
@@ -579,6 +590,68 @@ section {
         grid-template-columns:1fr;
     }
 
+}
+
+@media (max-width: 767px) {
+
+    .custom-nav { padding: 12px 0; }
+    .logo { font-size: 24px; }
+
+    .hero { padding-top: 128px; }
+    .hero .row { padding-top: 0; }
+
+    .tagline {
+        margin-top: 0;
+        font-size: 11px;
+        letter-spacing: 2px;
+    }
+
+    .hero h1 { font-size: clamp(36px, 10vw, 48px); }
+
+    .hero-btns {
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 32px;
+    }
+
+    .architecture-area {
+        height: 460px;
+        margin-top: 24px;
+    }
+
+    .center-circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .center-circle h4 { font-size: 1.1rem; }
+
+    .floating-card {
+        width: 155px;
+        padding: 18px;
+        border-radius: 20px;
+    }
+
+    .card1 { top: 24px; }
+    .card2 { left: 16px; }
+    .card3 { top: 30%; }
+}
+
+@media (max-width: 400px) {
+
+    .hero { padding-top: 116px; }
+    .architecture-area { height: 410px; }
+
+    .center-circle {
+        width: 150px;
+        height: 150px;
+    }
+
+    .floating-card {
+        width: 135px;
+        padding: 14px;
+        font-size: 0.88rem;
+    }
 }
 
 /* Timeline */
